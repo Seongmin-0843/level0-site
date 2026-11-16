@@ -95,13 +95,12 @@
   /* ---------- 페이지들 ---------- */
   function pageHome() {
     const latest = DATA.jams[0];
-    const prev = DATA.jams[1];   // 바로 이전 게임잼
+    const past = DATA.jams.slice(1);   // 지난 게임잼들 (목록으로만 표시, 눌러서 들어가면 게임이 보임)
     return `
       <section class="hero">
         <div>
-          <p class="eyebrow">${esc(DATA.club.school)}</p>
-          <h1>개노잼에서 만든 게임,<br><em>지금 바로</em> 플레이 해보세요.</h1>
-          <p class="lead">${esc(DATA.club.tagline)}</p>
+          <p class="hero-sub">${esc(DATA.club.school)} '${esc(DATA.club.name)}'</p>
+          <h1>0에서부터 시작해<br><em>무한히</em> 성장하다.</h1>
           <div class="hero-actions">
             ${latest ? `<a class="btn btn-accent" href="#jam-${esc(latest.id)}">최신 게임잼 보기</a>` : ''}
             <a class="btn" href="#jams">전체 게임잼</a>
@@ -119,13 +118,13 @@
         <div class="grid">${latest.games.map(g => gameCard({ ...g, jam: latest })).join('')}</div>
       </section>` : ''}
 
-      ${prev ? `
+      ${past.length ? `
       <section class="section">
         <div class="section-head">
-          <div><p class="eyebrow">Previous Jam · ${esc(prev.theme)}</p><h2>${esc(prev.title)}</h2></div>
-          <a class="link-more" href="#jam-${esc(prev.id)}">자세히 →</a>
+          <div><p class="eyebrow">Archive</p><h2>지난 게임잼</h2></div>
+          <a class="link-more" href="#jams">전체 보기 →</a>
         </div>
-        <div class="grid">${prev.games.map(g => gameCard({ ...g, jam: prev })).join('')}</div>
+        <div class="jam-list">${past.map(jamRow).join('')}</div>
       </section>` : ''}`;
   }
 

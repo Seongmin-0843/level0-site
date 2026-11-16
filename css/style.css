@@ -105,6 +105,8 @@ h2 { font-size: clamp(24px, 3vw, 32px); font-weight: 900; }
 }
 .hero h1 em { font-style: normal; color: var(--accent); }
 .hero p.lead { color: var(--muted); font-size: 17px; max-width: 520px; margin: 0 0 28px; }
+.hero-sub { margin: 0 0 6px; font-size: clamp(17px, 1.9vw, 22px); font-weight: 700; color: rgba(244,244,242,.78); }
+.hero h1 + .hero-actions { margin-top: 30px; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
 .hero-logo { position: relative; justify-self: center; width: min(360px, 80%); }
 .hero-logo img { position: relative; z-index: 1; filter: drop-shadow(0 20px 60px rgba(0,0,0,.6)); }
