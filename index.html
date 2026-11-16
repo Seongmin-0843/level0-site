@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LEVEL 0 — 대구대학교 게임 개발 동아리</title>
+  <meta name="description" content="대구대학교 게임 개발 동아리 LEVEL 0의 게임잼 결과물을 브라우저에서 바로 플레이하세요.">
+  <meta property="og:title" content="LEVEL 0 — 대구대학교 게임 개발 동아리">
+  <meta property="og:description" content="게임잼 결과물을 브라우저에서 바로 플레이하세요.">
+  <meta property="og:image" content="assets/og-image.png">
+  <link rel="icon" type="image/png" href="assets/logo-symbol-black.png" media="(prefers-color-scheme: light)">
+  <link rel="icon" type="image/png" href="assets/logo-symbol-white.png" media="(prefers-color-scheme: dark)">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="nav">
+    <a class="nav-brand" href="#" aria-label="LEVEL 0 홈">
+      <img src="assets/logo-symbol-white.png" alt="" class="nav-symbol">
+      <span>LEVEL 0</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#" data-nav="home">홈</a>
+      <a href="#jams" data-nav="jams">게임잼</a>
+      <a href="#about" data-nav="about">동아리 소개</a>
+    </nav>
+  </header>
+
+  <!-- 각 페이지 내용은 js/app.js 가 이 자리에 그려 넣습니다 -->
+  <main id="app"></main>
+
+  <footer class="footer">
+    <img src="assets/logo-white.png" alt="LEVEL 0" class="footer-logo">
+    <p>대구대학교 게임 개발 동아리 LEVEL 0</p>
+    <p class="muted" id="footer-links"></p>
+  </footer>
+
+  <!-- 게임 데이터 → 사이트 코드 순서로 불러옵니다 -->
+  <script src="data/games.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

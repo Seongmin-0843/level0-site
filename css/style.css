@@ -1,0 +1,313 @@
+/* =========================================================================
+   LEVEL 0 — 스타일
+   색을 바꾸고 싶으면 아래 :root 의 변수만 고치면 사이트 전체에 반영됩니다.
+   ========================================================================= */
+:root {
+  --bg: #0b0b0c;
+  --surface: #141416;
+  --surface-2: #1c1c1f;
+  --line: rgba(255, 255, 255, .09);
+  --text: #f4f4f2;
+  --muted: rgba(244, 244, 242, .58);
+  --accent: #d4ff3a;          /* 포인트 색 (라임) */
+  --accent-ink: #0b0b0c;      /* 포인트 색 위 글자색 */
+  --radius: 4px;
+  --display: "Chakra Petch", "Noto Sans KR", sans-serif;
+  --body: "Noto Sans KR", system-ui, sans-serif;
+  --max: 1180px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  /* 은은한 격자 배경 */
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+.muted { color: var(--muted); }
+
+/* ---------- 상단 내비게이션 ---------- */
+.nav {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px;
+  padding: 14px max(20px, calc((100vw - var(--max)) / 2));
+  background: rgba(11, 11, 12, .82);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-brand { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 700; font-size: 20px; letter-spacing: .04em; }
+.nav-symbol { width: 28px; height: auto; }
+.nav-links { display: flex; gap: 4px; }
+.nav-links a {
+  padding: 6px 12px; border-radius: var(--radius);
+  color: var(--muted); font-weight: 500; font-size: 15px;
+  transition: color .15s, background .15s;
+}
+.nav-links a:hover { color: var(--text); background: var(--surface-2); }
+.nav-links a.active { color: var(--accent-ink); background: var(--accent); }
+
+main { max-width: var(--max); margin: 0 auto; padding: 0 20px 80px; min-height: 70vh; }
+
+/* ---------- 공통 ---------- */
+.section { margin-top: 72px; }
+.section-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 22px; }
+.eyebrow {
+  font-family: var(--display); font-weight: 700; font-size: 13px;
+  letter-spacing: .18em; text-transform: uppercase; color: var(--accent);
+  margin: 0 0 6px;
+}
+h1, h2, h3 { margin: 0; line-height: 1.2; word-break: keep-all; }
+p, li { word-break: keep-all; }
+h2 { font-size: clamp(24px, 3vw, 32px); font-weight: 900; }
+.link-more { color: var(--muted); font-size: 14px; white-space: nowrap; }
+.link-more:hover { color: var(--accent); }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 20px; border-radius: var(--radius);
+  font-weight: 700; font-size: 15px; border: 1px solid var(--line);
+  background: var(--surface-2); color: var(--text); cursor: pointer;
+  transition: transform .12s, background .15s, border-color .15s;
+  font-family: var(--body);
+}
+.btn:hover { border-color: rgba(255,255,255,.3); }
+.btn:active { transform: translateY(1px); }
+.btn-accent { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.btn-accent:hover { border-color: #fff; }
+
+.badge {
+  display: inline-block; padding: 2px 8px; border-radius: 2px;
+  font-family: var(--display); font-size: 12px; font-weight: 700; letter-spacing: .06em;
+  border: 1px solid var(--line); color: var(--muted);
+}
+.badge-play { color: var(--accent-ink); background: var(--accent); border-color: var(--accent); }
+
+/* ---------- 메인 히어로 ---------- */
+.hero {
+  position: relative;
+  display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; gap: 40px;
+  padding: 72px 0 24px;
+}
+.hero h1 {
+  font-size: clamp(34px, 4.8vw, 58px); font-weight: 900; letter-spacing: -.02em;
+  margin: 8px 0 18px;
+}
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero p.lead { color: var(--muted); font-size: 17px; max-width: 520px; margin: 0 0 28px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.hero-logo { position: relative; justify-self: center; width: min(360px, 80%); }
+.hero-logo img { position: relative; z-index: 1; filter: drop-shadow(0 20px 60px rgba(0,0,0,.6)); }
+
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 48px; background: var(--line); border: 1px solid var(--line); }
+.stat { background: var(--bg); padding: 22px 24px; }
+.stat b { display: block; font-family: var(--display); font-size: 40px; line-height: 1; }
+.stat span { color: var(--muted); font-size: 14px; }
+
+/* ---------- 게임 카드 ---------- */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
+.card {
+  display: flex; flex-direction: column;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  overflow: hidden; transition: transform .18s, border-color .18s;
+}
+.card:hover { transform: translateY(-4px); border-color: rgba(212, 255, 58, .55); }
+.card-thumb { position: relative; aspect-ratio: 16 / 9; background: var(--surface-2); overflow: hidden; }
+.card-thumb img, .card-thumb svg { width: 100%; height: 100%; object-fit: cover; display: block; }
+.card-thumb .badge-play { position: absolute; left: 10px; top: 10px; }
+.card-body { padding: 14px 16px 18px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.card-body h3 { font-size: 18px; font-weight: 700; }
+.card-body p { margin: 0; color: var(--muted); font-size: 14px; }
+.card-meta { display: flex; gap: 6px; flex-wrap: wrap; margin-top: auto; padding-top: 8px; }
+
+/* ---------- 게임잼 목록 ---------- */
+.jam-list { display: flex; flex-direction: column; gap: 12px; }
+.jam-row {
+  display: grid; grid-template-columns: 140px 1fr auto; align-items: center; gap: 24px;
+  padding: 22px 24px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  transition: border-color .15s, background .15s;
+}
+.jam-row:hover { border-color: rgba(212, 255, 58, .55); background: var(--surface-2); }
+.jam-row .jam-date { font-family: var(--display); color: var(--muted); font-size: 14px; }
+.jam-row h3 { font-size: 20px; }
+.jam-row .jam-theme { color: var(--muted); font-size: 14px; margin-top: 4px; }
+.jam-row .jam-theme b { color: var(--accent); font-weight: 700; }
+.jam-row .jam-count { font-family: var(--display); font-size: 14px; color: var(--muted); white-space: nowrap; }
+
+/* ---------- 페이지 머리말 ---------- */
+.page-head { padding: 56px 0 8px; }
+.page-head h1 { font-size: clamp(30px, 4.4vw, 48px); font-weight: 900; margin: 6px 0 12px; }
+.page-head p { color: var(--muted); max-width: 680px; margin: 0; }
+.crumbs { font-size: 14px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; }
+.crumbs a:hover { color: var(--accent); }
+.jam-facts { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 18px; font-size: 14px; color: var(--muted); }
+.jam-facts b { color: var(--text); font-weight: 700; }
+
+/* ---------- 게임 상세 & 플레이 화면 ---------- */
+.game-layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 28px; margin-top: 28px; }
+.player {
+  position: relative; width: 100%;
+  background: #000; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+}
+.player iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: #000; }
+.player-cover { position: absolute; inset: 0; display: grid; place-items: center; cursor: pointer; }
+.player-cover > img, .player-cover > svg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(.45) blur(2px); transform: scale(1.04); }
+.player-cover .play-btn {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  font-family: var(--display); font-weight: 700; letter-spacing: .1em;
+}
+.play-icon {
+  width: 84px; height: 84px; display: grid; place-items: center;
+  background: var(--accent); color: var(--accent-ink); transform: rotate(45deg);
+  transition: transform .2s;
+}
+.play-icon svg { transform: rotate(-45deg); margin-left: 6px; }
+.player-cover:hover .play-icon { transform: rotate(45deg) scale(1.08); }
+.player-cover .hint { font-family: var(--body); font-weight: 400; letter-spacing: 0; font-size: 13px; color: var(--muted); }
+.player-none { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 24px; color: var(--muted); }
+.player-none > img, .player-none > svg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .18; }
+.player-none div { position: relative; }
+.player-bar { display: flex; gap: 8px; justify-content: flex-end; margin-top: 10px; }
+.player-bar .btn { padding: 8px 14px; font-size: 14px; }
+
+.game-side { display: flex; flex-direction: column; gap: 14px; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; }
+.panel h4 { margin: 0 0 10px; font-family: var(--display); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.panel ul { list-style: none; margin: 0; padding: 0; }
+.team li { padding: 4px 0; }
+.controls li { display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; border-bottom: 1px dashed var(--line); font-size: 14px; }
+.controls li:last-child { border-bottom: 0; }
+.controls kbd {
+  font-family: var(--display); font-size: 13px; font-weight: 700;
+  background: var(--surface-2); border: 1px solid var(--line); border-bottom-width: 2px;
+  padding: 1px 7px; border-radius: 3px; white-space: nowrap;
+}
+.game-desc { margin-top: 28px; max-width: 760px; white-space: pre-line; color: rgba(244,244,242,.85); }
+.links { display: flex; flex-direction: column; gap: 8px; }
+.links .btn { justify-content: center; }
+
+/* ---------- 동아리 소개 ---------- */
+.about { display: grid; grid-template-columns: 300px 1fr; gap: 48px; align-items: center; margin-top: 56px; }
+.about p { font-size: 17px; color: rgba(244,244,242,.85); white-space: pre-line; }
+
+.empty { padding: 48px; text-align: center; color: var(--muted); border: 1px dashed var(--line); border-radius: var(--radius); }
+
+/* ---------- 푸터 ---------- */
+.footer { border-top: 1px solid var(--line); padding: 40px 20px 56px; text-align: center; font-size: 14px; }
+.footer-logo { width: 64px; margin: 0 auto 14px; opacity: .9; }
+.footer p { margin: 2px 0; }
+.footer a:hover { color: var(--accent); }
+
+/* ---------- 모바일 ---------- */
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; padding-top: 40px; }
+  .hero-logo { order: -1; width: 180px; }
+  .game-layout { grid-template-columns: 1fr; }
+  .jam-row { grid-template-columns: 1fr; gap: 6px; }
+  .about { grid-template-columns: 1fr; }
+  .about img { width: 180px; }
+}
+@media (max-width: 520px) {
+  .nav-brand span { display: none; }
+  .stats { grid-template-columns: 1fr; }
+  .stat b { font-size: 32px; }
+}
+
+/* 전체 화면일 때는 비율 고정 해제 */
+.player:fullscreen { aspect-ratio: auto !important; border: 0; border-radius: 0; }
+
+/* hidden 속성이 붙은 요소는 항상 숨김 */
+[hidden] { display: none !important; }
+
+/* 몇 팀인지 표시하는 라벨 */
+.team-no {
+  align-self: flex-start; display: inline-block;
+  font-family: var(--display); font-size: 12px; font-weight: 700; letter-spacing: .06em;
+  color: var(--accent-ink); background: var(--accent); padding: 1px 8px; border-radius: 2px;
+}
+.team-no-lg { font-size: 14px; padding: 2px 10px; margin-top: 14px; }
+.page-head .team-no-lg + h1 { margin-top: 8px; }
+
+/* ---------- 역대 임원진 ---------- */
+.officer-timeline { list-style: none; margin: 0; padding: 0; position: relative; }
+.officer-timeline::before {               /* 세로 타임라인 선 (기수 표시와 카드 사이) */
+  content: ""; position: absolute; left: 139px; top: 26px; bottom: 44px; width: 2px; background: var(--line);
+}
+.officer-term { display: grid; grid-template-columns: 112px 1fr; column-gap: 56px; padding-bottom: 16px; position: relative; }
+.officer-term::before {                    /* 타임라인 점 (로고처럼 기울어진 사각형) */
+  content: ""; position: absolute; left: 134px; top: 20px; width: 12px; height: 12px;
+  background: var(--bg); border: 2px solid rgba(255,255,255,.4); transform: rotate(45deg); box-sizing: border-box;
+}
+.is-current::before { background: var(--accent); border-color: var(--accent); }
+.officer-when { text-align: right; padding-top: 10px; }
+.officer-when b { display: block; font-family: var(--display); font-size: 20px; line-height: 1.1; }
+.officer-when span { display: block; color: var(--muted); font-size: 13px; margin-top: 2px; }
+.officer-when em {
+  display: inline-block; margin-top: 6px; font-style: normal; font-size: 11px; font-weight: 700;
+  color: var(--accent-ink); background: var(--accent); padding: 1px 6px; border-radius: 2px;
+}
+.officer-card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 18px 22px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 32px;
+}
+.is-current .officer-card { border-color: rgba(212, 255, 58, .45); }
+.officer-lead { display: flex; align-items: center; gap: 10px; }
+.officer-lead strong { font-size: 22px; font-weight: 900; }
+.officer-role {
+  font-family: var(--display); font-size: 12px; font-weight: 700; letter-spacing: .04em; color: var(--muted);
+  border: 1px solid var(--line); padding: 1px 7px; border-radius: 2px; white-space: nowrap;
+}
+.officer-lead .officer-role { color: var(--accent-ink); background: var(--accent); border-color: var(--accent); }
+.officer-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 22px; }
+.officer-list li { display: flex; align-items: center; gap: 8px; font-size: 15px; }
+@media (max-width: 600px) {
+  .officer-timeline::before { left: 5px; top: 10px; bottom: 30px; }
+  .officer-term { grid-template-columns: 1fr; row-gap: 8px; padding-left: 28px; }
+  .officer-term::before { left: 0; top: 6px; }
+  .officer-when { text-align: left; padding: 0; }
+  .officer-when b, .officer-when span { display: inline; margin-right: 8px; }
+  .officer-when em { margin-top: 0; }
+}
+
+/* 파트장 (기획 / 프로그래밍 / 아트) */
+.officer-parts { flex-basis: 100%; border-top: 1px dashed var(--line); padding-top: 14px; display: flex; gap: 14px; align-items: flex-start; }
+.officer-parts-title {
+  font-family: var(--display); font-size: 12px; font-weight: 700; letter-spacing: .04em; color: var(--muted);
+  border: 1px solid var(--line); padding: 1px 7px; border-radius: 2px; white-space: nowrap; margin-top: 9px;
+}
+.officer-parts-grid { flex: 1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.officer-part {
+  --part: #9aa0a6;
+  background: var(--surface-2); border: 1px solid var(--line); border-left: 3px solid var(--part);
+  border-radius: var(--radius); padding: 8px 12px; display: flex; flex-direction: column; gap: 2px;
+}
+.officer-part[data-part="기획"]       { --part: #6fc3ff; }
+.officer-part[data-part="프로그래밍"] { --part: #b69cff; }
+.officer-part[data-part="아트"]       { --part: #ff8fb1; }
+.officer-part-name { font-size: 12px; font-weight: 700; color: var(--part); letter-spacing: .02em; }
+.officer-part-people { font-size: 15px; }
+@media (max-width: 600px) {
+  .officer-parts { flex-direction: column; gap: 8px; }
+  .officer-parts-title { margin-top: 0; }
+  .officer-parts-grid { width: 100%; grid-template-columns: 1fr; gap: 6px; }
+}
+
+/* 임원 이름 + 학과·학번 */
+.officer-people { display: inline-flex; flex-wrap: wrap; gap: 4px 16px; align-items: flex-start; }
+.person { display: inline-flex; flex-direction: column; line-height: 1.3; }
+.person-info { font-size: 12px; color: var(--muted); font-weight: 400; margin-top: 1px; white-space: nowrap; }
+.person-lead .person-name { font-size: 22px; font-weight: 900; }
+.officer-list li { align-items: flex-start; }
+.officer-list li .officer-role { margin-top: 2px; }
+.officer-part-people { display: flex; flex-wrap: wrap; gap: 4px 16px; }
