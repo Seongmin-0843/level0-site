@@ -242,8 +242,8 @@
     if (!p) return '';
     return [p.dept, p.year ? `${p.year}학번` : ''].filter(Boolean).join(' · ');
   };
+  // 임원 이름은 data/games.js 에 적은 순서 그대로 표시 (순서를 직접 정할 수 있도록)
   const peopleHtml = (str, cls = '') => String(str).split(',').map(n => n.trim()).filter(Boolean)
-    .sort((x, y) => x.localeCompare(y, 'ko'))
     .map(n => {
       const info = personInfo(n);
       return `<span class="person ${cls}"><span class="person-name">${esc(n)}</span>${info ? `<small class="person-info">${esc(info)}</small>` : ''}</span>`;
